@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ShoppingSQLiteDatabase"
+             xmlns:models="clr-namespace:ShoppingSQLiteDatabase.Models"
+             x:Class="ShoppingSQLiteDatabase.MainPage" x:DataType="local:MainPage" 
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#333333">
+
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Label Text="SIGN UP TO PURCHASE" FontSize="Title" FontAttributes="Bold" HorizontalOptions="Center" Margin="10,10,0,10" TextColor="White" />
+            <Frame BorderColor="Gray" CornerRadius="20" Padding="10" HeightRequest="400" WidthRequest="350">
+                <StackLayout>
+                    <Image Source="urbanupriselogo.png" HeightRequest="80" WidthRequest="80"/>
+                    <Entry Text="{Binding CurrentCustomer.CustomerName}" Placeholder="Name"/>
+                    <Entry Text="{Binding CurrentCustomer.CustomerSurname}"  Placeholder="Surname"/>
+                    <Entry Text="{Binding CurrentCustomer.CustomerEmail}" Placeholder="Email"/>
+                    <Editor Text="{Binding CurrentCustomer.CustomerBio}" Placeholder="Bio"/>
+                    
+                    <StackLayout Orientation="Horizontal" Spacing="10" Margin="10,30,10,10">
+                        <Button Text="Save button"  BackgroundColor="#FFA500" TextColor="Black" WidthRequest="150" Clicked="Button_Clicked" />
+                        <Button Text="Lets Purchase"  BackgroundColor="#FFA500" TextColor="Black" WidthRequest="150" Clicked="PurchaseButton_Clicked_2"/>
+                    </StackLayout>
+
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppingSQLiteDatabase.Pages.ProductPage"
+             xmlns:models="clr-namespace:ShoppingSQLiteDatabase.Models"
+             Title="ProductPage">
+    <ContentPage.Content>
+        <Grid>
+            <Label Text="Product Details" TextColor="Black"/>
+            <ListView x:Name="listView" Margin="5,0,0,0" Grid.Row="1"
+                      ItemsSource="{Binding ShoppingItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,0,0,0" RowDefinitions="*,4" ColumnDefinitions="120,*,*">
+                            <Frame HeightRequest="100" WidthRequest="100" HasShadow="False" Grid.Column="0" Grid.RowSpan="2" CornerRadius="10">
+                                <Image Source="{Binding ImagePath}" Aspect="AspectFill"/>
+                            </Frame>
+                            <StackLayout Grid.RowSpan="2" Grid.Column="1" VerticalOptions="Center">
+                                <Label Text="{Binding ItemName}" Padding="10,0,0,10" FontSize="Caption"/>
+                                <Label Text="{Binding Price}" Padding="10,0,0,0" FontSize="20" TextColor="Black"/>
+                            </StackLayout>
+                            <Grid Grid.Column="3" VerticalOptions="Center">
+                                <Button FontSize="13" Margin="0,0,10,0" BackgroundColor="Black" Text="Add to Cart" TextColor="White"/>
+                            </Grid>
+                            <Grid Grid.Row="1" Grid.ColumnSpan="3">
+                                <Label Background="LightGray" Margin="2" HeightRequest="1"/>
+                            </Grid>                            
+                        </Grid>                            
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
