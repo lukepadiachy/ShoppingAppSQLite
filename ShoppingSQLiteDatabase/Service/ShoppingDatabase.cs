@@ -17,16 +17,16 @@ namespace ShoppingSQLiteDatabase.Service
     {
         private SQLiteConnection _connection;
 
-        public string GetDataBasePath() 
+        public string GetDataBasePath()
         {
             string fileName = "shoppingdata.db";
             string pathToDb = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             return Path.Combine(pathToDb, fileName);
-        
+
         }
-        public ShoppingDatabase() 
-        { 
-        
+        public ShoppingDatabase()
+        {
+
             _connection = new SQLiteConnection(GetDataBasePath());
 
             _connection.CreateTable<CustomerProfile>();
@@ -48,41 +48,44 @@ namespace ShoppingSQLiteDatabase.Service
                 };
                 _connection.Insert(customerProfile);
             }
-
-            ShoppingItems shoppingItems = new ShoppingItems()
+            if (_connection.Table<ShoppingItems>().Count() == 0)
             {
-                ItemName = "Headset",
-                Price = "R 450.00",
-                Quantity = 10,
-                ImagePath = "https://m.media-amazon.com/images/I/61tl-Fi6-uL.jpg"
+                ShoppingItems shoppingItems = new ShoppingItems()
+                {
+                    ItemName = "Headset",
+                    Price = "R 450.00",
+                    Quantity = 10,
+                    ImagePath = "Images/headset.jpg"
 
-            };
-            _connection.Insert(shoppingItems);
-            
-            shoppingItems = new ShoppingItems()
-            {
-                ItemName = "Studio Setup",
-                Price = "R 7000.99",
-                Quantity = 2,
-                ImagePath = "https://media.takealot.com/covers_images/650c9814a20147f194d1f453dda1ded7/s-zoom.file"
+                };
+                _connection.Insert(shoppingItems);
 
-            };
-            _connection.Insert(shoppingItems);
+                shoppingItems = new ShoppingItems()
+                {
+                    ItemName = "Studio Setup",
+                    Price = "R 7000.99",
+                    Quantity = 2,
+                    ImagePath = "Images/studio.jpg"
 
-            shoppingItems = new ShoppingItems()
-            {
-                ItemName = "Flexirolla",
-                Price = "R 900.00",
-                Quantity = 10,
-                ImagePath = "https://miro.medium.com/v2/resize:fit:2000/1*aGoO5pKLUd67ecAJiQak_g.jpeg"
+                };
+                _connection.Insert(shoppingItems);
 
-            };
-            _connection.Insert(shoppingItems);
+                shoppingItems = new ShoppingItems()
+                {
+                    ItemName = "Flexirolla",
+                    Price = "R 900.00",
+                    Quantity = 10,
+                    ImagePath = "Images/flexirolla.jpg"
+
+                };
+                _connection.Insert(shoppingItems);
+
+            }
         }
         public CustomerProfile GetCustomerById(int Id)
         {
-           CustomerProfile customerProfile = _connection.Table<CustomerProfile>().Where(x=>x.CustomerProfileId == Id).FirstOrDefault();
-           return customerProfile;
+            CustomerProfile customerProfile = _connection.Table<CustomerProfile>().Where(x => x.CustomerProfileId == Id).FirstOrDefault();
+            return customerProfile;
         }
 
         public void UpdateCustomer(CustomerProfile customerProfile)
@@ -90,10 +93,30 @@ namespace ShoppingSQLiteDatabase.Service
             _connection.Update(customerProfile);
         }
 
+        public List<ShoppingItems> GetAllShoppingItems()
+        {
 
+            return _connection.Table<ShoppingItems>().ToList();
 
+        }
 
+        public void AddShoppingItemToCustomer(int customerId, int shoppingItemId)
+        {
+            var customer = _connection.Get<CustomerProfile>(customerId);
+            var shoppingItem = _connection.Get<ShoppingItems>(shoppingItemId);
 
+            customer.ShoppingItems.Add(shoppingItem);
+            _connection.Update(customer);
+        }
+
+        public void RemoveShoppingItemFromCustomer(int customerId, int shoppingItemId)
+        {
+            var customer = _connection.Get<CustomerProfile>(customerId);
+            var shoppingItem = _connection.Get<ShoppingItems>(shoppingItemId);
+
+            customer.ShoppingItems.Remove(shoppingItem);
+            _connection.Update(customer);
+        }
 
     }
 }

@@ -57,7 +57,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\cart.png" />
+	  <None Remove="Resources\Images\flexirolla.jpg" />
+	  <None Remove="Resources\Images\headset.jpg" />
+	  <None Remove="Resources\Images\store.png" />
+	  <None Remove="Resources\Images\studio.jpg" />
 	  <None Remove="Resources\Images\urbanupriselogo.png" />
+	  <None Remove="Resources\Images\user.png" />
 	</ItemGroup>
 
 	<ItemGroup>

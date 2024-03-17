@@ -15,11 +15,9 @@ namespace ShoppingSQLiteDatabase.Models
         public string CustomerBio { get; set; }
 
         [ForeignKey(typeof(ShoppingCart))]
-
-        public int CartItemId { get; set; }
+        public int? CartItemId { get; set; }
 
         [ManyToOne]
-
         public ShoppingCart ShoppingCart { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
@@ -27,10 +25,7 @@ namespace ShoppingSQLiteDatabase.Models
 
         public CustomerProfile()
         {
-
             ShoppingItems = new List<ShoppingItems>();
-
         }
-
     }
 }

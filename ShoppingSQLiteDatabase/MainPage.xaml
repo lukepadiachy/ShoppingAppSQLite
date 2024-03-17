@@ -5,7 +5,8 @@
              xmlns:models="clr-namespace:ShoppingSQLiteDatabase.Models"
              x:Class="ShoppingSQLiteDatabase.MainPage" x:DataType="local:MainPage" 
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#333333">
+             BackgroundColor="#333333"
+             >
 
     <ContentPage.Content>
         <StackLayout Padding="10">
@@ -18,15 +19,15 @@
                     <Entry Text="{Binding CurrentCustomer.CustomerEmail}" Placeholder="Email"/>
                     <Editor Text="{Binding CurrentCustomer.CustomerBio}" Placeholder="Bio"/>
                     
-                    <StackLayout Orientation="Horizontal" Spacing="10" Margin="10,30,10,10">
+                    <StackLayout Orientation="Horizontal" Spacing="10" Margin="10,30,10,10" HorizontalOptions="Center">
                         <Button Text="Save button"  BackgroundColor="#FFA500" TextColor="Black" WidthRequest="150" Clicked="Button_Clicked" />
-                        <Button Text="Lets Purchase"  BackgroundColor="#FFA500" TextColor="Black" WidthRequest="150" Clicked="PurchaseButton_Clicked_2"/>
+                       
                     </StackLayout>
 
                 </StackLayout>
             </Frame>
         </StackLayout>
-    </ContentPage.Content>
+        </ContentPage.Content>
 
-</ContentPage>
+    </ContentPage>
 

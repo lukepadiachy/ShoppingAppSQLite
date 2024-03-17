@@ -16,16 +16,20 @@ namespace ShoppingSQLiteDatabase.Models
 
         public string ItemName { get; set; }
 
-        public decimal Price { get; set; }
+        public string Price { get; set; }
 
         public int Quantity { get; set; }
 
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<CustomerProfile> CustomerProfile { get; set; }
+        [ForeignKey(typeof(CustomerProfile))]
+        public int? CustomerProfileId { get; set; }
+
+        [ManyToOne]
+        public CustomerProfile CustomerProfile { get; set; }
 
         public ShoppingCart()
         {
-            CustomerProfile = new List<CustomerProfile>();
+            CustomerProfile = new CustomerProfile();
         }
     }
 }
+
