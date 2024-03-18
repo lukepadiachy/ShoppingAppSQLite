@@ -1,7 +1,5 @@
 ﻿using ShoppingSQLiteDatabase.Models;
 using ShoppingSQLiteDatabase.Service;
-using System.Collections.ObjectModel;
-using ShoppingSQLiteDatabase.Pages;
 
 
 
@@ -56,12 +54,7 @@ namespace ShoppingSQLiteDatabase
             _database.UpdateCustomer(CurrentCustomer);
         }
 
-        private async void PurchaseButton_Clicked_2(object sender, EventArgs e)
-        {
-           await Navigation.PushModalAsync(new ProductPage());
-
-            
-        }
+        
     }
 
 }

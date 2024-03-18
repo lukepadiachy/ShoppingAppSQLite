@@ -1,12 +1,5 @@
 ﻿using ShoppingSQLiteDatabase.Models;
 using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLiteNetExtensions.Extensions;
-using SQLitePCL;
 
 
 
@@ -55,7 +48,7 @@ namespace ShoppingSQLiteDatabase.Service
                     ItemName = "Headset",
                     Price = "R 450.00",
                     Quantity = 10,
-                    ImagePath = "Images/headset.jpg"
+                    ImagePath = "headset.jpg"
 
                 };
                 _connection.Insert(shoppingItems);
@@ -65,7 +58,7 @@ namespace ShoppingSQLiteDatabase.Service
                     ItemName = "Studio Setup",
                     Price = "R 7000.99",
                     Quantity = 2,
-                    ImagePath = "Images/studio.jpg"
+                    ImagePath = "studio.jpg"
 
                 };
                 _connection.Insert(shoppingItems);
@@ -75,7 +68,7 @@ namespace ShoppingSQLiteDatabase.Service
                     ItemName = "Flexirolla",
                     Price = "R 900.00",
                     Quantity = 10,
-                    ImagePath = "Images/flexirolla.jpg"
+                    ImagePath = "flexirolla.jpg"
 
                 };
                 _connection.Insert(shoppingItems);

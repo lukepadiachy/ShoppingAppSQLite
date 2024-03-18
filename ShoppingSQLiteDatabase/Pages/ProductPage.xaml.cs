@@ -1,6 +1,7 @@
 using ShoppingSQLiteDatabase.Models;
 using ShoppingSQLiteDatabase.Service;
 using System.Collections.ObjectModel;
+using System.Transactions;
 
 namespace ShoppingSQLiteDatabase.Pages;
 
@@ -8,7 +9,19 @@ public partial class ProductPage : ContentPage
 {
     private ShoppingDatabase _database;
     private CustomerProfile _currentCustomer;
-    public ObservableCollection<ShoppingItems> Items { get; set; }
+    private ObservableCollection<ShoppingItems> _items { get; set; }
+
+    public ObservableCollection<ShoppingItems> Items
+    {
+        get { return _items; }
+        set
+        {
+            _items = value;
+
+            OnPropertyChanged();
+
+        }
+    }
 
     public ProductPage()
     {
@@ -25,8 +38,9 @@ public partial class ProductPage : ContentPage
 
     private void LoadData()
     {
-        _currentCustomer = _database.GetCustomerById(1);
+       // _currentCustomer = _database.GetCustomerById(1);
         Items = new ObservableCollection<ShoppingItems>(_database.GetAllShoppingItems());
+        ShoppingItemsListView.BindingContext = Items;
     }
 
     private void AddShoppingItem_Clicked(object sender, EventArgs e)
