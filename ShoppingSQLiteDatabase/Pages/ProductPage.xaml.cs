@@ -9,7 +9,7 @@ public partial class ProductPage : ContentPage
 {
     private ShoppingDatabase _database;
     private CustomerProfile _currentCustomer;
-    private ObservableCollection<ShoppingItems> _items { get; set; }
+    private ObservableCollection<ShoppingItems> _items; //{ get; set; }
 
     public ObservableCollection<ShoppingItems> Items
     {
@@ -28,19 +28,16 @@ public partial class ProductPage : ContentPage
         InitializeComponent();
         _database = new ShoppingDatabase();
         BindingContext = this;
-    }
-
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
         LoadData();
     }
+
+    
 
     private void LoadData()
     {
        // _currentCustomer = _database.GetCustomerById(1);
         Items = new ObservableCollection<ShoppingItems>(_database.GetAllShoppingItems());
-        ShoppingItemsListView.BindingContext = Items;
+        //ShoppingItemsListView.BindingContext = Items;
     }
 
     private void AddShoppingItem_Clicked(object sender, EventArgs e)

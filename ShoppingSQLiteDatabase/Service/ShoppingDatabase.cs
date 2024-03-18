@@ -43,36 +43,33 @@ namespace ShoppingSQLiteDatabase.Service
             }
             if (_connection.Table<ShoppingItems>().Count() == 0)
             {
-                ShoppingItems shoppingItems = new ShoppingItems()
+                List<ShoppingItems> items = new List<ShoppingItems>()
                 {
-                    ItemName = "Headset",
-                    Price = "R 450.00",
-                    Quantity = 10,
-                    ImagePath = "headset.jpg"
+                    new ShoppingItems()
+                    {
+                        ItemName = "Headset",
+                        Price = "R 450.00",
+                        Quantity = 10,
+                        ImagePath = "headset.jpg"
+                    },
 
+                    new ShoppingItems() 
+                    {
+                        ItemName = "Studio Setup",
+                        Price = "R 7000.99",
+                        Quantity = 2,
+                        ImagePath = "studio.jpg"
+                    },
+
+                    new ShoppingItems()
+                    {
+                        ItemName = "Flexirolla",
+                        Price = "R 900.00",   
+                        Quantity = 10,
+                        ImagePath = "flexirolla.jpg"
+                    }
                 };
-                _connection.Insert(shoppingItems);
-
-                shoppingItems = new ShoppingItems()
-                {
-                    ItemName = "Studio Setup",
-                    Price = "R 7000.99",
-                    Quantity = 2,
-                    ImagePath = "studio.jpg"
-
-                };
-                _connection.Insert(shoppingItems);
-
-                shoppingItems = new ShoppingItems()
-                {
-                    ItemName = "Flexirolla",
-                    Price = "R 900.00",
-                    Quantity = 10,
-                    ImagePath = "flexirolla.jpg"
-
-                };
-                _connection.Insert(shoppingItems);
-
+                _connection.InsertAll(items);
             }
         }
         public CustomerProfile GetCustomerById(int Id)
