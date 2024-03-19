@@ -26,8 +26,8 @@
         <Tab Title="Cart" Icon="cart.png">
             <ShellContent
             Title="Home"
-            ContentTemplate="{DataTemplate local:MainPage}"
-            Route="MainPage" />
+            ContentTemplate="{DataTemplate pages:CartPage}"
+            Route="CartPage" />
         </Tab>
 
     </TabBar>

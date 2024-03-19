@@ -24,6 +24,7 @@ namespace ShoppingSQLiteDatabase.Service
 
             _connection.CreateTable<CustomerProfile>();
             _connection.CreateTable<ShoppingItems>();
+            _connection.CreateTable<ShoppingCart>();
 
             SeedDatabase();
 
@@ -53,7 +54,7 @@ namespace ShoppingSQLiteDatabase.Service
                         ImagePath = "headset.jpg"
                     },
 
-                    new ShoppingItems() 
+                    new ShoppingItems()
                     {
                         ItemName = "Studio Setup",
                         Price = "R 7000.99",
@@ -64,7 +65,7 @@ namespace ShoppingSQLiteDatabase.Service
                     new ShoppingItems()
                     {
                         ItemName = "Flexirolla",
-                        Price = "R 900.00",   
+                        Price = "R 900.00",
                         Quantity = 10,
                         ImagePath = "flexirolla.jpg"
                     }
@@ -72,6 +73,7 @@ namespace ShoppingSQLiteDatabase.Service
                 _connection.InsertAll(items);
             }
         }
+
         public CustomerProfile GetCustomerById(int Id)
         {
             CustomerProfile customerProfile = _connection.Table<CustomerProfile>().Where(x => x.CustomerProfileId == Id).FirstOrDefault();
@@ -107,6 +109,22 @@ namespace ShoppingSQLiteDatabase.Service
             customer.ShoppingItems.Remove(shoppingItem);
             _connection.Update(customer);
         }
+        public List<ShoppingCart> GetCustomerCartItems()
+        {
 
+            int customerId = GetCurrentCustomerId(); // Example method to get the current customer's ID
+
+            // Query the shopping cart items for the given customer ID
+            List<ShoppingCart> cartItems = _connection.Table<ShoppingCart>().Where(item => item.CustomerProfileId == customerId).ToList();
+
+            return cartItems;
+        }
+        private int GetCurrentCustomerId()
+        {
+
+            return 1;
+
+
+        }
     }
 }

@@ -25,9 +25,9 @@
                                     <StackLayout Grid.Row="2" VerticalOptions="Center" Spacing="5" Padding="10">
                                     <Label Text="{Binding Price}" FontSize="Subtitle"/>
                                     <Label Text="Quantity" FontSize="Subtitle"/>
-                                    <Label Text="{Binding Quantity}" FontSize="Subtitle"/>    
-                                    <Button Text="Add" BackgroundColor="#FFA500" TextColor="White" VerticalOptions="End" Margin="0,10,0,0" CommandParameter="{Binding .}" Command="{Binding Path=BindingContext.AddShoppingItem_Clicked, Source={x:Reference ProductPage}}"/>
-                                    </StackLayout>
+                                    <Label Text="{Binding Quantity}" FontSize="Subtitle"/>
+                                    <Button Text="Add" BackgroundColor="#FFA500" TextColor="White" VerticalOptions="End" Margin="0,10,0,0" Command="{Binding Path=BindingContext.AddShoppingItemCommand, Source={x:Reference ShoppingItemsListView}}" CommandParameter="{Binding .}"/>
+                                </StackLayout>
                                 </Grid>
                             </Frame>
                         </ViewCell>
