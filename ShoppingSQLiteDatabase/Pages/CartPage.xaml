@@ -3,26 +3,69 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShoppingSQLiteDatabase.Pages.CartPage"
             Shell.NavBarIsVisible="False">
+    
     <ContentPage.Content>
-        <StackLayout Padding="10" Spacing="10">
-            <Label Text="My Cart" FontSize="Title" FontAttributes="Bold" HorizontalOptions="Center" Margin="10"/>
+        <StackLayout Margin="20" Spacing="10">
+            <!-- Customer Name -->
+            <Label Text="My Cart"
+               FontSize="Title"
+               FontAttributes="Bold"/>
+            <Label Text="Luke Padiachy"
+               FontSize="Large"
+               FontAttributes="Bold"/>
 
-            <!-- ListView to display selected items -->
-            <ListView x:Name="cartListView" Margin="0,10,0,0">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding="10">
-                                <Image Source="{Binding ImagePath}" HeightRequest="50" WidthRequest="50" Aspect="AspectFill"/>
-                                <StackLayout Margin="10,0,0,0">
-                                    <Label Text="{Binding ItemName}" FontSize="Medium"/>
-                                    <Label Text="{Binding Price}" FontSize="Small" TextColor="Gray"/>
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <!-- Item 1 -->
+            <SwipeView>
+                <SwipeView.RightItems>
+                    <SwipeItems>
+                        <SwipeItem Text="Add"
+                               BackgroundColor="Green"
+                               IconImageSource="add.png"
+                               Command="{Binding AddItemCommand}"/>
+                    </SwipeItems>
+                </SwipeView.RightItems>
+                <SwipeView.LeftItems>
+                    <SwipeItems>
+                        <SwipeItem Text="Remove"
+                               BackgroundColor="Red"
+                               IconImageSource="trash.png"
+                               Command="{Binding RemoveItemCommand}"/>
+                    </SwipeItems>
+                </SwipeView.LeftItems>
+
+                <Frame BackgroundColor="#444444"
+                   CornerRadius="10"
+                   Padding="10"
+                   HasShadow="True"
+                   HeightRequest="100">
+
+                    <StackLayout Orientation="Horizontal">
+                        <!-- Item Image -->
+                        <Frame BackgroundColor="White"
+                           CornerRadius="5"
+                           HeightRequest="70"
+                           WidthRequest="70"
+                           Padding="0">
+                            <!-- Set Padding to 0 -->
+                            <Image Source="headset.jpg"
+                               Aspect="AspectFill"
+                               VerticalOptions="FillAndExpand" 
+                                HorizontalOptions="FillAndExpand"/>
+                                
+                        </Frame>
+
+                        <!-- Item Details -->
+                        <StackLayout VerticalOptions="Center">
+                            <Label Text="Headset"
+                               FontSize="Medium"
+                               TextColor="White"/>
+                            <Label Text="Quantity: 1"
+                               FontSize="Medium"
+                               TextColor="White"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </SwipeView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

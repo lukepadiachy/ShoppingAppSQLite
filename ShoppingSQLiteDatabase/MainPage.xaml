@@ -6,6 +6,8 @@
              x:Class="ShoppingSQLiteDatabase.MainPage" x:DataType="local:MainPage" 
              Shell.NavBarIsVisible="False"
              BackgroundColor="#333333"
+             BackgroundImageSource="stereos.jpg"
+           
              >
 
     <ContentPage.Content>

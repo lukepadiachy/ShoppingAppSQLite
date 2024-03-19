@@ -10,22 +10,22 @@ public partial class CartPage : ContentPage
     public CartPage()
     {
         InitializeComponent();
-        _database = new ShoppingDatabase();
+      //  _database = new ShoppingDatabase();
     }
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-        LoadCartItems();
-    }
+    //protected override void OnAppearing()
+   // {
+     //   base.OnAppearing();
+       // LoadCartItems();
+    //}
 
-    private void LoadCartItems()
-    {
+    //private void LoadCartItems()
+    //{
         // Get the customer's shopping cart items from the database
-        List<ShoppingCart> cartItems = _database.GetCustomerCartItems();
+      //  List<ShoppingCart> cartItems = _database.GetCustomerCartItems();
 
 
         // Set the items as the ListView's ItemSource
-        cartListView.ItemsSource = cartItems;
-    }
+        //cartListView.ItemsSource = cartItems;
+    //}
 }
