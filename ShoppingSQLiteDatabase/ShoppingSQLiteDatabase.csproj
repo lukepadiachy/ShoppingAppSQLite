@@ -58,6 +58,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\add.png" />
+	  <None Remove="Resources\Images\backgroundtwo.jpg" />
 	  <None Remove="Resources\Images\cart.png" />
 	  <None Remove="Resources\Images\flexirolla.jpg" />
 	  <None Remove="Resources\Images\headset.jpg" />
