@@ -36,7 +36,7 @@
                     </SwipeItems>
                 </SwipeView.LeftItems>
 
-                <Frame BackgroundColor="#444444"
+                <Frame BackgroundColor="Black"
                    CornerRadius="10"
                    Padding="10"
                    HasShadow="True"
@@ -59,10 +59,12 @@
 
                        
                         <StackLayout VerticalOptions="Center">
-                            <Label Text="Headset"
+                            <Label Margin="10,0,10,0" 
+                                Text="Headset"
                                FontSize="Medium"
                                TextColor="White"/>
-                            <Label Text="Quantity: 1"
+                            <Label Margin="10,10,10,0" 
+                               Text="Quantity: 1"
                                FontSize="Medium"
                                TextColor="White"/>
                         </StackLayout>

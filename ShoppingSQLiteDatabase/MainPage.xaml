@@ -12,7 +12,9 @@
 
     <ContentPage.Content>
         <StackLayout Padding="10">
-            <Label Text="SIGN UP TO PURCHASE" FontSize="Title" FontAttributes="Bold" HorizontalOptions="Center" Margin="10,10,0,10" TextColor="White" />
+            <Frame BorderColor="Black" CornerRadius="20" Padding="10" Margin="10" BackgroundColor="Black">
+                <Label Text="SIGN UP TO PURCHASE" FontSize="Title" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White" />
+            </Frame>
             <Frame BorderColor="Gray" CornerRadius="20" Padding="10" HeightRequest="400" WidthRequest="350">
                 <StackLayout>
                     <Image Source="urbanupriselogo.png" HeightRequest="80" WidthRequest="80"/>
