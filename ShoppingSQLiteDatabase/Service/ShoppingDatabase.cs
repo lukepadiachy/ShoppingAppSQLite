@@ -91,40 +91,8 @@ namespace ShoppingSQLiteDatabase.Service
             return _connection.Table<ShoppingItems>().ToList();
 
         }
-
-        public void AddShoppingItemToCustomer(int customerId, int shoppingItemId)
-        {
-            var customer = _connection.Get<CustomerProfile>(customerId);
-            var shoppingItem = _connection.Get<ShoppingItems>(shoppingItemId);
-
-            customer.ShoppingItems.Add(shoppingItem);
-            _connection.Update(customer);
-        }
-
-        public void RemoveShoppingItemFromCustomer(int customerId, int shoppingItemId)
-        {
-            var customer = _connection.Get<CustomerProfile>(customerId);
-            var shoppingItem = _connection.Get<ShoppingItems>(shoppingItemId);
-
-            customer.ShoppingItems.Remove(shoppingItem);
-            _connection.Update(customer);
-        }
-        public List<ShoppingCart> GetCustomerCartItems()
-        {
-
-            int customerId = GetCurrentCustomerId(); // Example method to get the current customer's ID
-
-            // Query the shopping cart items for the given customer ID
-            List<ShoppingCart> cartItems = _connection.Table<ShoppingCart>().Where(item => item.CustomerProfileId == customerId).ToList();
-
-            return cartItems;
-        }
-        private int GetCurrentCustomerId()
-        {
-
-            return 1;
+        
 
 
-        }
     }
 }

@@ -11,24 +11,23 @@ namespace ShoppingSQLiteDatabase.Models
 {
     public class ShoppingCart
     {
-        [PrimaryKey,AutoIncrement]
+        [PrimaryKey, AutoIncrement]
         public int CartItemId { get; set; }
 
-        public string ItemName { get; set; }
+        [ForeignKey(typeof(ShoppingItems))]
+        public int ShoppingItemId { get; set; }
 
-        public string Price { get; set; }
+        [ManyToOne]
+        public ShoppingItems ShoppingItem { get; set; }
 
         public int Quantity { get; set; }
 
         [ForeignKey(typeof(CustomerProfile))]
-        public int? CustomerProfileId { get; set; }
-
-        [ManyToOne]
-        public CustomerProfile CustomerProfile { get; set; }
+        public int CustomerProfileId { get; set; }
 
         public ShoppingCart()
         {
-            CustomerProfile = new CustomerProfile();
+            ShoppingItem = new ShoppingItems();
         }
     }
 }
